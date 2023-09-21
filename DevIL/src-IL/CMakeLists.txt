@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 3.20)
 project(DevIL)
 
 include (TestBigEndian)
@@ -294,7 +294,10 @@ endif(IL_USE_DXTC_SQUISH)
 
 
 include_directories(${incs})
+
+if(BUILD_SHARED_LIBS)
 target_link_libraries(IL ${libs})
+endif()
 
 # generate config.h
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/config.h.cmake.in ${CMAKE_CURRENT_SOURCE_DIR}/include/config.h)

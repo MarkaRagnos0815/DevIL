@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.6)
+cmake_minimum_required(VERSION 3.20)
 
 project(ILU)
 
@@ -43,14 +43,13 @@ source_group("Header Files" FILES ${ILU_INC} )
 source_group("Resource Files" FILES ${ILU_RSRC} )
 
 # Remove SHARED to create a static library
+if(BUILD_SHARED_LIBS)
 add_library(ILU SHARED ${ILU_SRCS} ${ILU_INC} ${ILU_RSRC})
 set_target_properties(ILU PROPERTIES SOVERSION 1)
-
-
-## ILU requires IL
-target_link_libraries(ILU
-	IL
-)
+target_link_libraries(ILU IL)
+else()
+add_library(ILU STATIC ${ILU_SRCS} ${ILU_INC} ${ILU_RSRC})
+endif()
 
 # generate pkg-config file
 # TODO: add Requires.private or Libs.private
