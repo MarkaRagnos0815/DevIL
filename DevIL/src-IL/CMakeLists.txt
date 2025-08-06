@@ -17,11 +17,11 @@ file(GLOB DevIL_TXT)
 
 # From http://stackoverflow.com/questions/17317350/compiling-32-and-64-bit
 if( CMAKE_SIZEOF_VOID_P EQUAL 8 )
-    MESSAGE( "DevIL, 64 bit compiler detected" )
+    MESSAGE(STATUS "DevIL, 64 bit compiler detected" )
     SET( EX_PLATFORM 64 )
     SET( EX_PLATFORM_NAME "x64" )
 else( CMAKE_SIZEOF_VOID_P EQUAL 8 ) 
-    MESSAGE( "DevIL, 32 bit compiler detected" )
+    MESSAGE(STATUS "DevIL, 32 bit compiler detected" )
     SET( EX_PLATFORM 32 )
     SET( EX_PLATFORM_NAME "x86" )
 endif( CMAKE_SIZEOF_VOID_P EQUAL 8 )
